@@ -71,30 +71,32 @@ export default function ConsumerPriceIntelligencePage() {
               </div>
             </div>
 
-            <div className="relative h-48 flex items-end gap-2 pt-6">
+            <div className="relative h-48 flex pt-6">
               <div className="absolute left-0 top-0 bottom-6 flex flex-col justify-between text-xs" style={{ color: 'var(--color-text-muted)' }}>
                 <span>₹{maxPrice}</span>
                 <span>₹{Math.round((maxPrice + minPrice) / 2)}</span>
                 <span>₹{minPrice}</span>
               </div>
-              <div className="flex-1 flex items-end gap-2 ml-10">
+              <div className="flex-1 flex h-full gap-2 ml-10">
                 {historyData.map((point, i) => {
                   const height = ((point.price - minPrice) / priceRange) * 100;
                   const isLast = i === historyData.length - 1;
                   return (
-                    <div key={point.date} className="flex-1 flex flex-col items-center gap-1">
+                    <div key={point.date} className="flex-1 flex flex-col items-center gap-1 h-full">
                       <span className="text-xs font-medium" style={{ color: isLast ? 'var(--color-primary)' : 'var(--color-text-muted)' }}>
                         ₹{point.price}
                       </span>
-                      <div
-                        className="w-full rounded-t-lg transition-all hover:opacity-80"
-                        style={{
-                          height: `${Math.max(height, 8)}%`,
-                          background: isLast
-                            ? 'linear-gradient(180deg, #8B5CF6, #6366F1)'
-                            : 'linear-gradient(180deg, #94A3B8, #CBD5E1)',
-                        }}
-                      />
+                      <div className="flex-1 w-full flex items-end">
+                        <div
+                          className="w-full rounded-t-lg transition-all hover:opacity-80"
+                          style={{
+                            height: `${Math.max(height, 8)}%`,
+                            background: isLast
+                              ? 'linear-gradient(180deg, #8B5CF6, #6366F1)'
+                              : 'linear-gradient(180deg, #94A3B8, #CBD5E1)',
+                          }}
+                        />
+                      </div>
                       <span className="text-xs" style={{ color: 'var(--color-text-muted)', fontSize: '0.6rem' }}>
                         {new Date(point.date).toLocaleDateString('en-IN', { day: 'numeric', month: 'short' })}
                       </span>

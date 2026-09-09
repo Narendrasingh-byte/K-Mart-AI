@@ -82,7 +82,7 @@
 }
 
 /* Base Reset */
-* {
+:where(*) {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -262,6 +262,16 @@ h4 { font-size: 1.125rem; }
   border: 1px solid var(--color-border-light);
   box-shadow: var(--shadow-sm);
   transition: box-shadow var(--transition-base), transform var(--transition-base);
+  margin-bottom: 14px;
+}
+
+.card:last-child {
+  margin-bottom: 0;
+}
+
+.grid > .card,
+.flex > .card {
+  margin-bottom: 0;
 }
 
 .card:hover {
@@ -398,9 +408,21 @@ h4 { font-size: 1.125rem; }
   transition: all var(--transition-fast);
 }
 
-/* Ensure icons don't overlap by allowing pl-10 utility to override default padding */
+/* Ensure icons don't overlap by allowing padding utilities to override default padding */
+.input.pl-9 {
+  padding-left: 36px;
+}
+
 .input.pl-10 {
   padding-left: 40px;
+}
+
+.input.pr-4 {
+  padding-right: 16px;
+}
+
+.input.pr-10 {
+  padding-right: 40px;
 }
 
 .input:hover {
