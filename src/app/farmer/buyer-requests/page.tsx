@@ -96,7 +96,7 @@ export default function BuyerRequestsPage() {
         </p>
       </div>
 
-      <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4">
+      <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4" style={{ marginTop: '16px', marginBottom: '16px' }}>
         <div className="flex items-center gap-2">
           {['open', 'accepted', 'all'].map((tab) => (
             <button

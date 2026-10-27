@@ -24,6 +24,7 @@ export default function InventoryPage() {
       price: p.price,
       qualityGrade: p.qualityGrade,
       freshness: p.freshness,
+      image: p.images[0] || '',
       lowStockThreshold: Math.floor(p.quantity * 0.2),
       lastUpdated: p.updatedAt,
     }))
@@ -120,7 +121,7 @@ export default function InventoryPage() {
       <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
         {/* Main Inventory List */}
         <div className="lg:col-span-3 space-y-4">
-          <div className="relative">
+          <div className="relative" style={{ marginTop: '4px', marginBottom: '18px' }}>
             <Search size={16} className="absolute left-3 top-1/2 -translate-y-1/2" style={{ color: 'var(--color-text-muted)' }} />
             <input
               type="text"
@@ -142,8 +143,12 @@ export default function InventoryPage() {
                   style={{ animationDelay: `${index * 30}ms` }}
                 >
                   <div className="flex items-center gap-4">
-                    <div className="flex-shrink-0 w-12 h-12 rounded-xl flex items-center justify-center" style={{ background: 'linear-gradient(135deg, #F0FDF4, #ECFDF5)' }}>
-                      <Leaf size={20} style={{ color: 'var(--color-primary-lighter)' }} />
+                    <div className="flex-shrink-0 w-12 h-12 rounded-xl overflow-hidden" style={{ background: 'linear-gradient(135deg, #F0FDF4, #ECFDF5)' }}>
+                      <img
+                        src={item.image || '/images/tomato.jpg'}
+                        alt={item.name}
+                        style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                      />
                     </div>
 
                     <div className="flex-1 min-w-0">

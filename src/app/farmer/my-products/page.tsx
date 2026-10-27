@@ -104,7 +104,7 @@ export default function MyProductsPage() {
       </div>
 
       {/* Filters */}
-      <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
+      <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3" style={{ marginTop: '16px', marginBottom: '16px' }}>
         <div className="relative flex-1">
           <Search size={16} className="absolute left-3 top-1/2 -translate-y-1/2" style={{ color: 'var(--color-text-muted)' }} />
           <input
@@ -158,8 +158,12 @@ export default function MyProductsPage() {
               >
                 <div className="flex items-center gap-4">
                   {/* Image */}
-                  <div className="flex-shrink-0 w-16 h-16 rounded-xl flex items-center justify-center" style={{ background: 'linear-gradient(135deg, #F0FDF4, #ECFDF5)' }}>
-                    <Leaf size={24} style={{ color: 'var(--color-primary-lighter)' }} />
+                  <div className="flex-shrink-0 w-16 h-16 rounded-xl overflow-hidden" style={{ background: 'linear-gradient(135deg, #F0FDF4, #ECFDF5)' }}>
+                    <img
+                      src={product.images[0] || '/images/tomato.jpg'}
+                      alt={product.name}
+                      style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                    />
                   </div>
 
                   {/* Info */}

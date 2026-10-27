@@ -127,13 +127,20 @@ export default function Sidebar({ isOpen, onClose }: SidebarProps) {
 
         {/* User info card */}
         {!isCollapsed && (
-          <div className="px-4 py-3 mx-3 mt-3 rounded-xl" style={{ background: 'var(--color-bg-alt)' }}>
+          <div
+            className="px-4 py-3.5 mx-3 rounded-xl"
+            style={{
+              background: 'var(--color-bg-alt)',
+              marginTop: '16px',
+              marginBottom: '16px',
+            }}
+          >
             <div className="flex items-center gap-3">
               <div
                 className="flex items-center justify-center rounded-full flex-shrink-0 text-sm font-semibold"
                 style={{
-                  width: 36,
-                  height: 36,
+                  width: 38,
+                  height: 38,
                   background: 'var(--color-primary-pale)',
                   color: 'var(--color-primary)',
                 }}
@@ -141,11 +148,11 @@ export default function Sidebar({ isOpen, onClose }: SidebarProps) {
                 {userProfile?.displayName?.charAt(0)?.toUpperCase() || 'U'}
               </div>
               <div className="flex flex-col min-w-0">
-                <span className="text-sm font-medium truncate" style={{ color: 'var(--color-text)' }}>
+                <span className="text-sm font-semibold truncate leading-tight" style={{ color: 'var(--color-text)' }}>
                   {userProfile?.displayName || 'User'}
                 </span>
                 <span
-                  className="text-xs capitalize"
+                  className="text-xs capitalize font-medium leading-tight mt-1"
                   style={{ color: 'var(--color-text-secondary)' }}
                 >
                   {role}
@@ -156,7 +163,7 @@ export default function Sidebar({ isOpen, onClose }: SidebarProps) {
         )}
 
         {/* Navigation Items */}
-        <nav className="flex-1 overflow-y-auto py-3 px-3">
+        <nav className="flex-1 overflow-y-auto pt-1 pb-3 px-3">
           <div className="flex flex-col gap-1">
             {navItems.map((item) => {
               const Icon = iconMap[item.icon];

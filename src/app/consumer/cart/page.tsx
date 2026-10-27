@@ -67,10 +67,14 @@ export default function CartPage() {
               <div className="flex items-center gap-4">
                 {/* Product image */}
                 <div
-                  className="flex-shrink-0 w-20 h-20 rounded-xl flex items-center justify-center"
+                  className="flex-shrink-0 w-20 h-20 rounded-xl overflow-hidden"
                   style={{ background: 'linear-gradient(135deg, #F0FDF4, #ECFDF5)' }}
                 >
-                  <Leaf size={24} style={{ color: 'var(--color-primary-lighter)' }} />
+                  <img
+                    src={item.productImage || '/images/tomato.jpg'}
+                    alt={item.productName}
+                    style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                  />
                 </div>
 
                 {/* Product info */}

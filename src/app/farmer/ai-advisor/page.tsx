@@ -525,10 +525,14 @@ export default function AIAdvisorPage() {
                   disabled={isStreaming}
                 >
                   <div
-                    className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0"
+                    className="w-8 h-8 rounded-lg overflow-hidden flex-shrink-0"
                     style={{ background: '#D8F3DC' }}
                   >
-                    <Leaf size={14} style={{ color: 'var(--color-primary)' }} />
+                    <img
+                      src={p.images[0] || '/images/tomato.jpg'}
+                      alt={p.name}
+                      style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                    />
                   </div>
                   <div className="flex-1 min-w-0">
                     <p className="text-xs font-medium truncate" style={{ color: 'var(--color-text)' }}>

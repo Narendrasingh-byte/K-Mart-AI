@@ -77,13 +77,17 @@ export default function ProductDetailPage({ params }: { params: Promise<{ id: st
         {/* Product Images */}
         <div>
           <div
-            className="w-full rounded-2xl flex items-center justify-center relative overflow-hidden"
+            className="w-full rounded-2xl overflow-hidden relative"
             style={{
               height: 400,
               background: 'linear-gradient(135deg, #F0FDF4 0%, #ECFDF5 50%, #F0FDFA 100%)',
             }}
           >
-            <Leaf size={80} style={{ color: 'var(--color-primary-lighter)' }} />
+            <img
+              src={product.images[0] || '/images/tomato.jpg'}
+              alt={product.name}
+              style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+            />
             {product.freshness === 'harvested-today' && (
               <span
                 className="absolute top-4 left-4 badge badge-success"

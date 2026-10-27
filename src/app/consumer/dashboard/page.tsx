@@ -210,12 +210,17 @@ export default function ConsumerDashboard() {
               href={`/consumer/marketplace/${product.id}`}
               className="card card-interactive p-4 no-underline group"
             >
-              {/* Product image placeholder */}
+              {/* Product image */}
               <div
-                className="w-full h-36 rounded-xl mb-3 flex items-center justify-center text-3xl"
+                className="w-full h-36 rounded-xl mb-3 overflow-hidden"
                 style={{ background: 'var(--color-bg-alt)' }}
               >
-                <Leaf size={32} style={{ color: 'var(--color-primary-lighter)' }} />
+                <img
+                  src={product.images[0] || '/images/tomato.jpg'}
+                  alt={product.name}
+                  style={{ width: '100%', height: '100%', objectFit: 'cover', transition: 'transform 0.3s ease' }}
+                  className="group-hover:scale-105"
+                />
               </div>
 
               <div className="flex items-start justify-between gap-2">

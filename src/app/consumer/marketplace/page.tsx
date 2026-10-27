@@ -106,7 +106,7 @@ export default function MarketplacePage() {
       </div>
 
       {/* Search & Filter Bar */}
-      <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
+      <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3" style={{ marginTop: '16px', marginBottom: '16px' }}>
         <div className="relative flex-1">
           <Search size={18} className="absolute left-3 top-1/2 -translate-y-1/2" style={{ color: 'var(--color-text-muted)' }} />
           <input
@@ -285,10 +285,16 @@ export default function MarketplacePage() {
                 <>
                   <Link href={`/consumer/marketplace/${product.id}`} className="no-underline block">
                     <div
-                      className="relative w-full h-40 flex items-center justify-center"
+                      className="relative w-full h-40 overflow-hidden"
                       style={{ background: 'linear-gradient(135deg, #F0FDF4, #ECFDF5)' }}
                     >
-                      <Leaf size={36} style={{ color: 'var(--color-primary-lighter)' }} />
+                      <img
+                        src={product.images[0] || '/images/tomato.jpg'}
+                        alt={product.name}
+                        style={{ width: '100%', height: '100%', objectFit: 'cover', transition: 'transform 0.3s ease' }}
+                        onMouseOver={(e) => (e.currentTarget.style.transform = 'scale(1.05)')}
+                        onMouseOut={(e) => (e.currentTarget.style.transform = 'scale(1)')}
+                      />
                       {/* Freshness badge */}
                       {product.freshness === 'harvested-today' && (
                         <span
@@ -359,10 +365,14 @@ export default function MarketplacePage() {
                 <div className="flex items-center gap-4 p-4">
                   <Link href={`/consumer/marketplace/${product.id}`} className="no-underline flex-shrink-0">
                     <div
-                      className="w-20 h-20 rounded-xl flex items-center justify-center"
+                      className="w-20 h-20 rounded-xl overflow-hidden"
                       style={{ background: 'linear-gradient(135deg, #F0FDF4, #ECFDF5)' }}
                     >
-                      <Leaf size={24} style={{ color: 'var(--color-primary-lighter)' }} />
+                      <img
+                        src={product.images[0] || '/images/tomato.jpg'}
+                        alt={product.name}
+                        style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                      />
                     </div>
                   </Link>
                   <div className="flex-1 min-w-0">

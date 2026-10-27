@@ -119,7 +119,7 @@ export default function FarmerOrdersPage() {
       </div>
 
       {/* Search */}
-      <div className="relative">
+      <div className="relative" style={{ marginTop: '18px', marginBottom: '18px' }}>
         <Search size={16} className="absolute left-3 top-1/2 -translate-y-1/2" style={{ color: 'var(--color-text-muted)' }} />
         <input
           type="text"

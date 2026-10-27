@@ -224,8 +224,12 @@ export default function CheckoutPage() {
               <div className="space-y-2">
                 {items.map((item) => (
                   <div key={item.productId} className="flex items-center gap-3 p-3 rounded-xl" style={{ background: 'var(--color-bg-alt)' }}>
-                    <div className="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0" style={{ background: '#D8F3DC' }}>
-                      <Leaf size={16} style={{ color: 'var(--color-primary)' }} />
+                    <div className="w-10 h-10 rounded-lg overflow-hidden flex-shrink-0" style={{ background: '#D8F3DC' }}>
+                      <img
+                        src={item.productImage || '/images/tomato.jpg'}
+                        alt={item.productName}
+                        style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                      />
                     </div>
                     <div className="flex-1">
                       <p className="text-sm font-medium" style={{ color: 'var(--color-text)' }}>{item.productName}</p>

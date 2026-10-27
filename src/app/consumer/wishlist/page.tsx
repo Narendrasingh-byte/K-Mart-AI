@@ -11,6 +11,21 @@ import { useCart } from '@/context/CartContext';
 import { Heart, ShoppingBag, Trash2, TrendingDown } from 'lucide-react';
 import { toast } from 'sonner';
 
+const productImageMap: Record<string, string> = {
+  'Fresh Tomatoes': '/images/tomato.jpg',
+  'Premium Onions': '/images/onion.jpg',
+  'Alphonso Mangoes': '/images/mango.jpg',
+  'Organic Potatoes': '/images/potato.jpg',
+  'Fresh Cauliflower': '/images/cauliflower.jpg',
+  'Punjab Wheat': '/images/wheat.jpg',
+  'Basmati Rice': '/images/rice.jpg',
+  'Green Chillies': '/images/chilli.jpg',
+  'Yellow Toor Dal': '/images/dal.jpg',
+  'Fresh Coriander': '/images/coriander.jpg',
+  'Organic Turmeric': '/images/turmeric.jpg',
+  'Fresh Okra (Bhindi)': '/images/bhindi.jpg',
+};
+
 export default function WishlistPage() {
   const { addItem } = useCart();
   const [wishlist, setWishlist] = useState(
@@ -31,6 +46,7 @@ export default function WishlistPage() {
       unit: product.unit,
       farmerId: product.farmerId,
       farmerName: product.farmerName,
+      productImage: product.images?.[0] || productImageMap[product.name] || '/images/tomato.jpg',
     });
     toast.success(`Added ${product.name} to cart`);
   };
@@ -57,11 +73,16 @@ export default function WishlistPage() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
           {wishlist.map((item, index) => (
             <div key={item.id} className="card p-4 animate-fade-in-up" style={{ animationDelay: `${index * 50}ms` }}>
-              <div className="relative w-full h-32 rounded-xl mb-3 flex items-center justify-center bg-gray-50">
-                <span className="text-4xl">🌱</span>
+              <div className="relative w-full h-36 rounded-xl mb-3 overflow-hidden" style={{ background: 'linear-gradient(135deg, #F0FDF4, #ECFDF5)' }}>
+                <img
+                  src={item.images?.[0] || productImageMap[item.name] || '/images/tomato.jpg'}
+                  alt={item.name}
+                  style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                />
                 <button
                   onClick={() => removeFromWishlist(item.id)}
-                  className="absolute top-2 right-2 p-1.5 bg-white rounded-full shadow-sm text-red-500 hover:scale-110 transition-transform"
+                  className="absolute top-2 right-2 p-1.5 bg-white/90 backdrop-blur-sm rounded-full shadow-sm text-red-500 hover:scale-110 transition-transform"
+                  aria-label="Remove from wishlist"
                 >
                   <Heart size={16} fill="currentColor" />
                 </button>

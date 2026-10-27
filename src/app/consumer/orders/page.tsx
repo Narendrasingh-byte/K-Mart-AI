@@ -6,10 +6,17 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import { formatCurrency, formatRelativeTime, formatDate } from '@/lib/constants';
+import { sampleProducts } from '@/data/sampleData';
 import {
   ShoppingBag, Clock, CheckCircle2, Truck, Package, XCircle,
   Search, Star, MapPin, ArrowRight, RefreshCw, Leaf, ChevronDown, ChevronUp,
 } from 'lucide-react';
+
+// Map product names to their images for quick lookup
+const productImageMap: Record<string, string> = {};
+sampleProducts.forEach((p) => {
+  productImageMap[p.name] = p.images[0] || '';
+});
 
 const consumerOrders = [
   { id: 'ORD-2001', farmer: 'Rajesh Kumar', product: 'Fresh Tomatoes', qty: '10 kg', amount: 280, status: 'in-transit', placedAt: '2026-09-09T06:00:00Z', eta: 'Today, 5 PM', rated: false },
@@ -87,7 +94,7 @@ export default function ConsumerOrdersPage() {
         ))}
       </div>
 
-      <div className="relative">
+      <div className="relative" style={{ marginTop: '18px', marginBottom: '18px' }}>
         <Search size={16} className="absolute left-3 top-1/2 -translate-y-1/2" style={{ color: 'var(--color-text-muted)' }} />
         <input type="text" placeholder="Search orders..." value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} className="input pl-9" />
       </div>
@@ -108,8 +115,12 @@ export default function ConsumerOrdersPage() {
               <div key={order.id} className="card overflow-hidden animate-fade-in-up" style={{ animationDelay: `${index * 40}ms` }}>
                 <div className="p-4 cursor-pointer" onClick={() => setExpandedOrder(isExpanded ? null : order.id)}>
                   <div className="flex items-center gap-4">
-                    <div className="flex-shrink-0 w-14 h-14 rounded-xl flex items-center justify-center" style={{ background: 'linear-gradient(135deg, #F0FDF4, #ECFDF5)' }}>
-                      <Leaf size={22} style={{ color: 'var(--color-primary-lighter)' }} />
+                    <div className="flex-shrink-0 w-14 h-14 rounded-xl overflow-hidden" style={{ background: 'linear-gradient(135deg, #F0FDF4, #ECFDF5)' }}>
+                      <img
+                        src={productImageMap[order.product] || '/images/tomato.jpg'}
+                        alt={order.product}
+                        style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                      />
                     </div>
                     <div className="flex-1 min-w-0">
                       <div className="flex items-center gap-2 mb-0.5">
